@@ -42,6 +42,14 @@ def add_no_verify_flag(parser):
     )
 
 
+def make_date_generation_optional(parser):
+    parser.add_argument(
+        '-d',
+        '--no-date',
+        action='store_true',
+        help='Disables date on generation of the date of the scan.',
+    )
+
 class ParserBuilder:
 
     def __init__(self):
@@ -59,7 +67,8 @@ class ParserBuilder:
             ._add_exclude_lines_argument()\
             ._add_word_list_argument()\
             ._add_use_all_plugins_argument()\
-            ._add_no_verify_flag()
+            ._add_no_verify_flag() \
+            ._make_date_generation_optional()
 
         PluginOptions(self.parser).add_arguments()
 
@@ -130,6 +139,10 @@ class ParserBuilder:
 
     def _add_no_verify_flag(self):
         add_no_verify_flag(self.parser)
+        return self
+
+    def _make_date_generation_optional(self):
+        make_date_generation_optional(self.parser)
         return self
 
 
