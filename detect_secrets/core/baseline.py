@@ -19,6 +19,7 @@ def initialize(
     word_list_file=None,
     word_list_hash=None,
     should_scan_all_files=False,
+    add_date_to_baseline=True
 ):
     """Scans the entire codebase for secrets, and returns a
     SecretsCollection object.
@@ -38,6 +39,9 @@ def initialize(
     :param word_list_hash: optional iterated sha1 hash of the words in the word list.
 
     :type should_scan_all_files: bool
+
+    :type add_date_to_baseline: bool
+    :param add_date_to_baseline: defines if date is added to baseline
 
     :rtype: SecretsCollection
     """
