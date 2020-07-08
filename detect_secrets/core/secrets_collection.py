@@ -12,6 +12,11 @@ from detect_secrets.core.potential_secret import PotentialSecret
 from detect_secrets.plugins.common import initialize
 from detect_secrets.util import build_automaton
 
+def generate_date(shall_generate):
+    if shall_generate:
+        return strftime('%Y-%m-%dT%H:%M:%SZ', gmtime())
+    else:
+        return "does_not_matter"
 
 class SecretsCollection:
 
@@ -267,7 +272,7 @@ class SecretsCollection:
 
         return None
 
-    def format_for_baseline_output(self):
+    def generate_baseline_skeleton(self, use_date):
         """
         :rtype: dict
         """
@@ -284,7 +289,7 @@ class SecretsCollection:
         plugins_used = sorted(plugins_used, key=lambda x: x['name'])
 
         return {
-            'generated_at': strftime('%Y-%m-%dT%H:%M:%SZ', gmtime()),
+            'generated_at': generate_date(use_date),
             'exclude': {
                 'files': self.exclude_files,
                 'lines': self.exclude_lines,

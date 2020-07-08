@@ -63,6 +63,7 @@ def main(argv=None):
             else:
                 print(
                     baseline.format_baseline_for_output(
+                        args,
                         baseline_dict,
                     ),
                 )
@@ -173,7 +174,7 @@ def _perform_scan(args, plugins, automaton, word_list_hash):
         word_list_hash=word_list_hash,
         path=args.path,
         should_scan_all_files=args.all_files,
-    ).format_for_baseline_output()
+    ).generate_baseline_skeleton(args.add_date_to_baseline)
 
     if old_baseline:
         new_baseline = baseline.merge_baseline(
