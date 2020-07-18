@@ -249,9 +249,6 @@ class ParserBuilder:
         return self
 
 
-== == == =
->>>>>> > origin / master
-
 
 class ScanOptions:
 
