@@ -92,6 +92,7 @@ def make_date_generation_optional(parser):
         help='Disables date on generation of the date of the scan.',
     )
 
+
 def add_shared_arguments(parser):
     """
     These are arguments that are for both
@@ -227,7 +228,6 @@ class ParserBuilder:
         )
         return self
 
-<<<<<<< HEAD
     def _add_exclude_lines_argument(self):
         add_exclude_lines_argument(self.parser)
         return self
@@ -248,8 +248,10 @@ class ParserBuilder:
         make_date_generation_optional(self.parser)
         return self
 
-=======
->>>>>>> origin/master
+
+== == == =
+>>>>>> > origin / master
+
 
 class ScanOptions:
 
